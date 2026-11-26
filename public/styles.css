@@ -1,0 +1,89 @@
+:root{
+  --papper:#FBF7EF; --kort:#FFFDF8; --ink:#22303A; --damp:#6B7A84;
+  --petrol:#2F4F8F; --petrol-ljus:#DDE4F2; --guld:#D99A21;
+  --rod:#B4462F; --rod-ljus:#F6DFD8; --gron:#2E7D5B; --gron-ljus:#DCEFE4;
+  --kant:#E4DACB; --radius:16px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%;overflow:hidden}
+body{
+  background:var(--papper);color:var(--ink);
+  font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  -webkit-text-size-adjust:100%;touch-action:manipulation;overscroll-behavior:none;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+button{font-family:inherit;color:inherit;border:0;cursor:pointer;touch-action:manipulation}
+
+/* ---------- start ---------- */
+#startskarm{position:fixed;inset:0;display:grid;place-items:center;background:var(--papper);padding:16px;overflow:auto}
+.sk-inner{max-width:580px;text-align:center}
+.sk-kotten{width:88px;height:88px;display:block;margin:0 auto 6px}
+h1{font-size:clamp(28px,4.6vw,44px);margin:0 0 4px;letter-spacing:-.01em}
+.sk-tagline{margin:0 0 12px;color:var(--damp);font-size:18px}
+.sk-taggar{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
+.sk-taggar span{background:var(--petrol-ljus);color:var(--petrol);font-size:14px;font-weight:600;padding:5px 12px;border-radius:999px}
+.sk-play{display:inline-flex;align-items:center;gap:10px;background:var(--petrol);color:#fff;font-size:22px;font-weight:700;padding:16px 40px;border-radius:999px;box-shadow:0 4px 0 #1e3563}
+.sk-play:active{transform:translateY(2px);box-shadow:0 2px 0 #1e3563}
+.sk-play svg{width:26px;height:26px;fill:currentColor}
+.sk-hur{font-size:16px;line-height:1.55;color:#3d4c56;margin:18px auto 0;max-width:500px}
+.sk-laroplan{margin:18px auto 0;max-width:520px;text-align:left;font-size:14px;color:var(--damp)}
+.sk-laroplan summary{cursor:pointer;font-weight:600;color:var(--petrol)}
+.sk-laroplan p{line-height:1.5;margin:8px 0 0}
+
+/* ---------- spel ---------- */
+#spel{height:100%;display:flex;flex-direction:column;padding:8px clamp(8px,2vw,22px) 10px;gap:6px}
+.hud{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px}
+.hud-vanster{display:flex;align-items:center;gap:8px;min-width:0}
+.hud-kotten{width:34px;height:34px;flex:0 0 auto}
+.hud-titel{font-weight:700;font-size:17px;line-height:1.1}
+.hud-niva{font-size:13px;color:var(--damp);line-height:1.2}
+.hud-hoger{display:flex;align-items:center;gap:8px}
+.stjarnor{font-size:18px;font-weight:700;color:var(--guld);min-width:52px;text-align:right}
+.ikon-knapp{width:44px;height:44px;border-radius:12px;background:var(--kort);border:1px solid var(--kant);display:grid;place-items:center}
+.ikon-knapp svg{width:22px;height:22px;fill:currentColor}
+.ikon-knapp.av{color:var(--damp)}
+
+.instruktion{
+  margin:0;font-size:18px;line-height:1.35;text-align:center;color:#2c3b45;
+  background:var(--kort);border:1.5px solid var(--kant);border-radius:12px;
+  padding:8px 12px;min-height:44px;display:flex;align-items:center;justify-content:center;
+}
+.instruktion.fel{background:var(--rod-ljus);border-color:#E6C0B4;color:#7d2f1d}
+
+#scen{flex:1 1 auto;min-height:0;position:relative}
+#duk{display:block;width:100%;height:100%;touch-action:none}
+
+.verktygsrad{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.farger{display:flex;gap:10px}
+.farg{width:48px;height:48px;border-radius:14px;border:3px solid transparent;box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
+.farg.vald{border-color:var(--ink);box-shadow:inset 0 0 0 2px #fff}
+.knappar{display:flex;gap:10px}
+.knapp{min-height:48px;padding:10px 20px;border-radius:999px;background:var(--kort);border:2px solid var(--kant);font-size:17px;font-weight:600}
+.knapp.stark{background:var(--petrol);color:#fff;border-color:var(--petrol);box-shadow:0 3px 0 #1e3563}
+.knapp.stark:active{transform:translateY(2px);box-shadow:0 1px 0 #1e3563}
+
+/* ---------- slut ---------- */
+#slut{position:fixed;inset:0;background:var(--papper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px;z-index:10}
+.slut-kotten{width:96px;height:96px}
+#slut h2{font-size:clamp(26px,4vw,38px);margin:0}
+#slut-poang{font-size:22px;color:var(--guld);font-weight:700;margin:0}
+#slut-text{font-size:18px;max-width:460px;line-height:1.5;margin:0 0 8px}
+
+/* ---------- små skärmar ---------- */
+@media (max-width:640px){
+  .hud-titel{font-size:15px}
+  .instruktion{font-size:16px;padding:6px 10px}
+  .farg{width:44px;height:42px}
+  .knapp{padding:8px 14px;font-family:inherit;font-size:16px;min-height:44px}
+}
+@media (max-height:560px){
+  .hud{min-height:38px}
+  .hud-kotten{width:28px;height:28px}
+  .instruktion{font-size:16px;min-height:36px;padding:4px 10px}
+  .farg{width:42px;height:40px}
+  .knapp{min-height:42px;font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}

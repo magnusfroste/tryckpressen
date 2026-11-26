@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tryckpressen – spegelvända tryck och mönster, bild åk 4–6</title>
+<meta name="description" content="Rita din egen stämpel och tryck den på papperet. Upptäck att ett tryck blir spegelvänt och att samma stämpel kan bli ett mönster. Bild åk 4–6, gratis, ingen inloggning.">
+<meta name="theme-color" content="#FBF7EF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:title" content="Tryckpressen – bild åk 4–6">
+<meta property="og:description" content="Rita en stämpel, tryck den och se att trycket blir spegelvänt. Gör ett mönster med rapport.">
+<meta property="og:image" content="kort.png">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="styles.css">
+<script src="https://www.skolappar.com/kotten.js" defer></script>
+<script src="ljud/lines.js" defer></script>
+<script src="ljud/rosten.js" defer></script>
+</head>
+<body>
+
+<div id="startskarm">
+  <div class="sk-inner">
+    <svg id="start-kotten" class="sk-kotten" viewBox="0 0 40 40" aria-hidden="true"></svg>
+    <h1>Tryckpressen</h1>
+    <p class="sk-tagline">Spegelvända tryck och mönster</p>
+    <div class="sk-taggar"><span>Skapa</span><span>Bild</span><span>Åk 4–6</span></div>
+    <button class="sk-play" id="spela" aria-label="Spela Tryckpressen">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+      Spela
+    </button>
+    <p class="sk-hur">Rita en form i stämpeln, välj färg och tryck på papperet. Först är det fritt. Sedan visas en beställning: trycket ska se ut som bilden – men tänk på att trycket blir spegelvänt. Sist gör du en rapport: samma stämpel tryckt på jämna avstånd över hela papperet.</p>
+    <details class="sk-laroplan">
+      <summary>Läroplanskoppling (Lgr22)</summary>
+      <p><b>Bild, åk 4–6, centralt innehåll:</b> ”Teckning, måleri, tryck och tredimensionellt arbete.”</p>
+      <p><b>Bild, åk 4–6:</b> ”Verktyg och material för teckning, måleri, trycktekniker, tredimensionellt arbete, fotografering, arbete med rörlig bild och digital bildbehandling.”</p>
+      <p>Appen tränar två grundvillkor i tryckteknik: bilden på plåten är spegelvänd när den hamnar på papperet, och en liten stämpel kan upprepas till ett mönster (rapport) genom att tryckas på bestämda avstånd. Källa: Skolverket, läroplanen för grundskolan (Lgr22).</p>
+    </details>
+  </div>
+</div>
+
+<main id="spel" hidden>
+  <header class="hud">
+    <div class="hud-vanster">
+      <svg id="hud-kotten" class="hud-kotten" viewBox="0 0 40 40" aria-hidden="true"></svg>
+      <div>
+        <div class="hud-titel">Tryckpressen</div>
+        <div class="hud-niva" id="nivutext">Nivå 1: Första trycket</div>
+      </div>
+    </div>
+    <div class="hud-hoger">
+      <span class="stjarnor" id="stjarnor" aria-live="polite">0 &#9733;</span>
+      <button class="ikon-knapp" id="ljud" aria-label="Ljud på eller av">
+        <svg viewBox="0 0 24 24" aria-hidden="true" id="ljudikon"><path d="M4 9h3l4-4v14l-4-4H4z"/><path d="M15 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <p class="instruktion" id="instruktion" aria-live="polite"></p>
+
+  <div id="scen"><canvas id="duk" aria-label="Stämpel till vänster, papper till höger"></canvas></div>
+
+  <div class="verktygsrad">
+    <div class="farger" id="farger" role="group" aria-label="Välj färg"></div>
+    <div class="knappar">
+      <button class="knapp" id="nyform">Ny form</button>
+      <button class="knapp stark" id="nasta" hidden>Nästa nivå</button>
+    </div>
+  </div>
+</main>
+
+<div id="slut" hidden>
+  <svg id="slut-kotten" class="slut-kotten" viewBox="0 0 40 40" aria-hidden="true"></svg>
+  <h2>Pressen är klar!</h2>
+  <p id="slut-poang">0 &#9733;</p>
+  <p id="slut-text">Du har gjort tryck, spegelvänt dem och byggt ett mönster.</p>
+  <button class="sk-play" id="igen" aria-label="Spela igen">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+    Spela igen
+  </button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
