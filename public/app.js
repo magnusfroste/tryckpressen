@@ -99,11 +99,7 @@
     if (!ljudPa || !text) return;
     try {
       if (window.__rost) { if (window.__rost(text)) return; }
-      if ("speechSynthesis" in window) {
-        var u = new SpeechSynthesisUtterance(text);
-        u.lang = "sv-SE"; u.rate = 0.96;
-        window.speechSynthesis.cancel(); window.speechSynthesis.speak(u);
-      }
+      
     } catch (e) {}
   }
   function event(n) { try { window.skolappar && window.skolappar.event(n); } catch (e) {} }
@@ -498,7 +494,7 @@
     ljudPa = !ljudPa;
     this.classList.toggle("av", !ljudPa);
     if (!ljudPa) {
-      try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) {}
+      try { if (window.__rostStopp) window.__rostStopp(); } catch (e) {}
       if (window.__rostStopp) window.__rostStopp();
       event("sound_off");
     } else {
